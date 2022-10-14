@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import Footer from '../components/Footer';
 import {UserAuth} from '../context/AuthContext';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // eslint-disable-next-line no-unused-vars
     const {user, signUp} =  UserAuth();
     const navigate = useNavigate();
 
@@ -12,7 +14,9 @@ const SignUp = () => {
         e.preventDefault();
         try {
             await signUp(email, password);
-            navigate('/');
+            // eslint-disable-next-line no-lone-blocks
+            {alert('Đăng kí thành công!')}
+            navigate('/home')
         } catch (error) {
             console.log(error);
         }
@@ -29,7 +33,7 @@ const SignUp = () => {
                 <div className='absolute w-full px-4 py-24 z-0'>
                     <div className='max-w-[450px] h-[550px] mx-auto bg-black/75 text-white'>
                         <div className='max-w-[320px] mx-auto pt-12'>
-                            <h1 className='text-3xl font-bold'>Sign Up</h1>
+                            <h1 className='text-3xl font-bold'>Đăng ký</h1>
                             <form onSubmit={handleSubmit} className='w-full flex flex-col py-4'>
                                 <input
                                     className='p-3 my-2 bg-gray-700 rounded' 
@@ -47,17 +51,18 @@ const SignUp = () => {
                                 />
                                 <button className='bg-red-600 py-3 my-6 rounded font-bold'>Sign Up</button>
                                 <div className='flex items-center justify-between text-sm text-gray-400'>
-                                    <p><input className='mr-2' type="checkbox" />Remember me</p>
-                                    <p>Need help?</p>
+                                    <p><input className='mr-2' type="checkbox" />Ghi nhớ tôi</p>
+                                    <p>Cần trợ giúp?</p>
                                 </div>
                                 <div className='mt-12'>
-                                    <p className='text-base font-extralight text-gray-400'>You have account netflix?<span className='text-base font-medium ml-2 text-white'>{' '}<Link to='/'>Sign In</Link></span></p>
-                                    <p className='mt-2'>this pages is protected by hentai.z so don't be afraid of anyone. <span className='text-sky-600'>Learn more</span></p>
+                                    <p className='text-base font-extralight text-gray-400'>Bạn đã có tài khoản netflix?<span className='text-base font-medium ml-2 text-white'>{' '}<Link to='/'>Đăng nhập</Link></span></p>
+                                    <p className='mt-2'>Trang này được đầu tư từ Taihenz.vn.net, anh em xem ủng hộ kkkk. <span className='text-sky-600 cursor-pointer'>Chi tiết thêm</span></p>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         </>
     )

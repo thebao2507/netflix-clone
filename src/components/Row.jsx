@@ -23,6 +23,8 @@ const Row = ({ title, fetchURL, rowID }) => {
         let slider = document.getElementById('slider' + rowID);
         slider.scrollLeft = slider.scrollLeft + 500;
     }
+    
+    //movies.map(item => console.log(item.id));
 
     return (
         <>
